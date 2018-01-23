@@ -25,10 +25,17 @@ golang_test:
     - fi
     - export GOPATH=$GOPATH
     - echo "gopath="$GOPATH
-    - cp -r $PWD $GOPATHSRC
-    - cd $GOPATHSRC
+    - echo "-----------------------------------"
+    - cd $PWD
     - ls -la
-    - echo $CI_PIPELINE_ID
-    - echo $CI_JOB_ID
-    - echo $CI_COMMIT_SHA
+    - cd sso
+    - ls -la
+    - echo "-----------------------------------"
+    # - cp -r $PWD $GOPATHSRC
+    # - cd $GOPATHSRC
+    # - ls -la
+    # - echo $CI_PIPELINE_ID
+    # - echo $CI_JOB_ID
+    # - echo $CI_COMMIT_SHA
+    
     #- go test ./...
