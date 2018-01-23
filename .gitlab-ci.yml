@@ -9,13 +9,12 @@ golang_test:
   stage: test
   script:
     - PARENTFOLDER=$(dirname "$PWD")
-    - echo $PARENTFOLDER
-    # - GOPATH=$SSO"/gopath"
-    # - GOPATHSRC=$SSO"/gopath/src"
-    # - if [ -f "$GOPATH" ] ;then echo "gopath exists"; else mkdir $GOPATH ;fi
-    # - if [ -f "$GOPATHSRC" ] ;then echo "gopath src exists"; else mkdir $GOPATHSRC ;fi
-    # - export GOPATH=$GOPATH
-    # - echo $GOPATH
-    # - cp -r $SSO $GOPATHSRC
-    # - cd $SSO
-    # - ls -la
+    - GOPATH=$PARENTFOLDER"/gopath"
+    - GOPATHSRC=$PARENTFOLDER"/gopath/src"
+    - if [ -f "$GOPATH" ] ;then echo "gopath exists"; else mkdir $GOPATH ;fi
+    - if [ -f "$GOPATHSRC" ] ;then echo "gopath src exists"; else mkdir $GOPATHSRC ;fi
+    - export GOPATH=$GOPATH
+    - echo "gopath="$GOPATH
+    - cp -r $PWD $GOPATHSRC
+    - cd $GOPATHSRC
+    - ls -la
