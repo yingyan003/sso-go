@@ -15,6 +15,6 @@ golang_test:
     - if [ -f "$GOPATHSRC" ] ;then echo "gopath src exists"; else mkdir $GOPATHSRC ;fi
     - export GOPATH=$GOPATH
     - echo $GOPATH
-    - cp $SSO $GOPATHSRC
+    - cp -r $SSO $GOPATHSRC
     - cd $SSO
     - ls -la
