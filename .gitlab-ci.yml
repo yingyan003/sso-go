@@ -28,3 +28,7 @@ golang_test:
     - cp -r $PWD $GOPATHSRC
     - cd $GOPATHSRC
     - ls -la
+    - echo $CI_PIPELINE_ID
+    - echo $CI_JOB_ID
+    - echo $CI_COMMIT_SHA
+    - go test ./...
