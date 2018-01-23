@@ -4,8 +4,8 @@ variables:
   GOPATH: "/usr/local/gopath"
 stages:
 - test
-- build
-- deploy
+#- build
+#- deploy
 golang_test:
   stage: test
   script:
