@@ -8,8 +8,7 @@ stages:
 golang_test:
   stage: test
   script:
-    - SSO=$PWD
-    - $PARENTFOLDER=$(dirname $(PWD))
+    - $PARENTFOLDER=$(dirname "$PWD")
     - echo $PARENTFOLDER
     # - GOPATH=$SSO"/gopath"
     # - GOPATHSRC=$SSO"/gopath/src"
