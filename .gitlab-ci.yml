@@ -9,7 +9,8 @@ golang_test:
   stage: test
   script:
     - SSO=$PWD
-    - $PARENTFOLDER=$(dirname $(pwd));echo $PARENTFOLDER
+    - $PARENTFOLDER=$(dirname $(PWD))
+    - echo $PARENTFOLDER
     # - GOPATH=$SSO"/gopath"
     # - GOPATHSRC=$SSO"/gopath/src"
     # - if [ -f "$GOPATH" ] ;then echo "gopath exists"; else mkdir $GOPATH ;fi
