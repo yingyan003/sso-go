@@ -8,4 +8,5 @@ stages:
 golang_test:
   stage: test
   script:
-    - echo ../
+    - cd ..
+    - echo $PWD
