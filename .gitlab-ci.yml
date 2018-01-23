@@ -9,6 +9,7 @@ golang_test:
   stage: test
   script:
     - cd ..
-    - mkdir gopath
+    - mkdir  gopath
+    - echo $PWD
     - export GOPATH=$PWD"/gopath"
     - echo $GOPATH
