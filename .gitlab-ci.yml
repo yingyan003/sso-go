@@ -1,7 +1,7 @@
 variables:
   IMAGE: "gitlab-ci-demo"
   DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
-  GOPATH: "/usr/local/gopath"
+  GOPATH: "../gopath"
 stages:
 - test
 #- build
