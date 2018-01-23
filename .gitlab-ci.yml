@@ -11,8 +11,8 @@ golang_test:
     - SSO=$PWD
     - GOPATH=$SSO"/gopath"
     - GOPATHSRC=$SSO"/gopath/src"
-    - if [ -f "$GOPATH" ] ;then echo "gopath exists"; else mkdir $gopath ;fi
-    - if [ -f "$GOPATHSRC" ] ;then echo "gopath exists"; else mkdir $gopath ;fi
+    - if [ -f "$GOPATH" ] ;then echo "gopath exists"; else mkdir $GOPATH ;fi
+    - if [ -f "$GOPATHSRC" ] ;then echo "gopath src exists"; else mkdir $GOPATHSRC ;fi
     - export GOPATH=$GOPATH
     - echo $GOPATH
     - cp $SSO $GOPATHSRC
