@@ -8,13 +8,11 @@ stages:
 golang_test:
   stage: test
   script:
-    - cd ..
-    - gopath=$PWD"/gopath/src"
-    - if [ -f "$gopath" ] 
-    - then
-    - echo "gopath exists"
-    - else
-    - mkdir $gopath
-    - fi
-    - export GOPATH=$gopath
+    - SSO=$PWD
+    - GOPATH=$SSO"/gopath"
+    - GOPATHSRC=$SSO"/gopath/src"
+    - if [ -f "$GOPATH" ] ;then echo "gopath exists"; else mkdir $gopath ;fi
+    - if [ -f "$GOPATHSRC" ] ;then echo "gopath exists"; else mkdir $gopath ;fi
+    - export GOPATH=$GOPATH
     - echo $GOPATH
+    - cp $SSO $GOPATHSRC
