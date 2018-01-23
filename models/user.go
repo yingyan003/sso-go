@@ -3,7 +3,6 @@ package models
 import (
 	"github.com/astaxie/beego/logs"
 	"sso/common/errors"
-	"sso/common/util"
 	"github.com/astaxie/beego/orm"
 	"time"
 )
@@ -64,7 +63,7 @@ func UpdateUser(u *User) *errors.Status {
 		return status
 	}
 	//todo 当username不存在时，并不返回错误
-	_, err := orm.NewOrm().QueryTable("user").Filter("username", u.Username).Update(orm.Params{"password": u.Password, "updatetime": util.GetCurrentTime()})
+	_, err := orm.NewOrm().QueryTable("user").Filter("username", u.Username).Update(orm.Params{"password": u.Password})
 	if err != nil {
 		logs.Error("update user fail,err:", err)
 		status := errors.NewStatus(errors.DB_CRUD_ERR, "用户更新失败")
@@ -113,6 +112,17 @@ func QueryUserByNameAndPwd(username,password string) (*User, *errors.Status) {
 		return nil, status
 	}
 	return u, nil
+}
+
+func QueryUserList()(users []*User,status *errors.Status){
+	//默认查询最大行数为1000
+	_,err:=orm.NewOrm().QueryTable("user").All(&users,"id","username")
+	if err!=nil{
+		logs.Error("QueryUserList fail,err=%v",err)
+		status=errors.NewStatus(errors.DB_CRUD_ERR,"查询用户列表失败")
+		return nil,status
+	}
+	return users,nil
 }
 
 /*

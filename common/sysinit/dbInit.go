@@ -6,8 +6,6 @@ import (
 	"net/url"
 	"github.com/astaxie/beego/orm"
 	"sso/models"
-	"fmt"
-	"encoding/gob"
 )
 
 const(
@@ -19,9 +17,7 @@ const(
 
 )
 
-func init(){
-	fmt.Println("zxy",beego.AppConfig.String("zxy"))
-
+func DBInit(){
 	//获取数据库配置信息
 	dbhost:=beego.AppConfig.String("db.host")
 	Dbport:=beego.AppConfig.String("db.port")
@@ -39,12 +35,11 @@ func init(){
 		ds=ds+"&loc="+url.QueryEscape(timezone)
 	}
 
-	fmt.Println("ds",ds)
-
 	//todo 解决beego框架本身bug的方式
 	//在model里自定义struct，但并不进行数据库操作，故不使用orm.RegisterModel（）注册模型时会报错
 	//错误信息如下：gob: name not registered for interface: "*models.Session"
-	gob.Register(new(models.Session))
+	//gob.Register(new(models.Session))
+	//gob.Register(models.Session{})
 
 	//注册数据库
 	orm.RegisterDataBase("default","mysql",ds)

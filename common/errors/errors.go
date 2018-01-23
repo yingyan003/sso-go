@@ -19,8 +19,14 @@ const (
 	DB_CRUD_ERR = "db_crud_err"
 	NEW_USER_ERR = "new_user_err"
 
+	//reids
+	REDIS_ERR = "redis_err"
+
 	//jwt
 	TOKEN_ERR = "token_err"
+
+
+	RELOGIN
 )
 
 func NewStatus(code, msg string) *Status {
