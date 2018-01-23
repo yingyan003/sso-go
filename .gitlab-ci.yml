@@ -9,9 +9,11 @@ stages:
 golang_test:
   stage: test
   script:
+    - mkdir $GOPATH
+    - export GOPATH=$GOPATH
+    - mkdir $GOPATH/src
+    - cp $PWD $GOPATH/src
     - echo $CI_PIPELINE_ID
     - echo $CI_JOB_ID
     - echo $CI_COMMIT_SHA
-    - echo $PWD
-    - echo $GOPATH
-    #- go test ./...
+    - go test ./...
