@@ -11,8 +11,18 @@ golang_test:
     - PARENTFOLDER=$(dirname "$PWD")
     - GOPATH=$PARENTFOLDER"/gopath"
     - GOPATHSRC=$PARENTFOLDER"/gopath/src"
-    - if [ -f "$GOPATH" ] ;then echo "gopath exists"; else mkdir $GOPATH ;fi
-    - if [ -f "$GOPATHSRC" ] ;then echo "gopath src exists"; else mkdir $GOPATHSRC ;fi
+    - if [ -f "$GOPATH" ] 
+    - then 
+          echo "gopath exists"
+    - else 
+          mkdir $GOPATH 
+    - fi
+    - if [ -f "$GOPATHSRC" ]
+    - then 
+    -    echo "gopath src exists"
+    - else 
+    -    mkdir $GOPATHSRC 
+    - fi
     - export GOPATH=$GOPATH
     - echo "gopath="$GOPATH
     - cp -r $PWD $GOPATHSRC
