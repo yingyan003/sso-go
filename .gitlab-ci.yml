@@ -1,29 +1,39 @@
 variables:
- IMAGE: "sso"
- TAG: "citest"
-
-before_script:
- - mkdir src
- - mkdir src/sso
- - mv -f common src/sso
- - mv -f conf src/sso
- - mv -f controllers src/sso
- - mv -f models src/sso
- - mv -f routers src/sso
- - mv -f swagger src/sso
- - mv -f tests src/sso
- - mv -f vendor src/sso
- - mv -f main.go src/sso
-
-build_image:
- script:
-  - export GOPATH=$PWD
-  - cd src/sso/
-  - go build main.go
-  - cd ../../
-  - echo `git log | head -1 | cut -d ' ' -f2` > ./Manifest
-#  - IMAGE=sso
-#  - TAG=`date +%Y%m%d%H%M`
-  - docker build -t $IMAGE:$TAG .
-  - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$TAG
-  - docker push img.reg.3g:15000/$IMAGE:$TAG
+  IMAGE: "gitlab-ci-demo"
+  DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
+stages:
+- test
+#- build
+#- deploy
+golang_test:
+  stage: test
+  script:
+    - PARENTFOLDER=$(dirname "$PWD")
+    - echo "-------------$PARENTFOLDER----------------------"
+    - echo $PARENTFOLDER
+    - echo "-------------$PARENTFOLDER----------------------"
+    - GOPATH=$PARENTFOLDER"/gopath"
+    - GOPATHSRC=$PARENTFOLDER"/gopath/src"
+    - if [ -f "$GOPATH" ] 
+    - then 
+          echo "gopath exists"
+    - else 
+          mkdir $GOPATH 
+    - fi
+    - if [ -f "$GOPATHSRC" ]
+    - then 
+    -    echo "gopath src exists"
+    - else 
+    -    mkdir $GOPATHSRC 
+    - fi
+    - export GOPATH=$GOPATH
+    - echo "gopath="$GOPATH
+    - echo "-------------$GOPATH----------------------"
+    - echo $GOPATH
+    - echo $GOPATHSRC
+    - echo "-------------$GOPATH----------------------"
+    - ls -la
+    # - echo $CI_PIPELINE_ID
+    # - echo $CI_JOB_ID
+    # - echo $CI_COMMIT_SHA
+    #- go test ./...
