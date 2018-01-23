@@ -16,3 +16,5 @@ golang_test:
     - export GOPATH=$GOPATH
     - echo $GOPATH
     - cp $SSO $GOPATHSRC
+    - cd $SSO
+    - ls -la
