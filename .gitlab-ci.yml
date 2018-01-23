@@ -9,7 +9,7 @@ golang_test:
   stage: test
   script:
     - cd ..
-    - gopath = $PWD"/gopath/src"
+    - gopath=$PWD"/gopath/src"
     - if [ -f "$gopath" ] 
     - then
     - echo "gopath exists"
