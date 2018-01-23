@@ -9,7 +9,12 @@ golang_test:
   stage: test
   script:
     - cd ..
-    - mkdir  gopath
-    - echo $PWD
-    - export GOPATH=$PWD"/gopath"
+    - $gopath = $PWD"/gopath/src"
+    - if [ -f "$gopath" ] 
+    - then
+    - echo "gopath exists"
+    - else
+    - mkdir $gopath
+    - fi
+    - export GOPATH=$gopath
     - echo $GOPATH
