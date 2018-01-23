@@ -21,7 +21,7 @@ build_image:
   - cd src/sso/
   - go build main.go
   - cd ../../
-  - echo `git log | head -1 | cut -d ' ' -f2` > ../Manifest
+  - echo `git log | head -1 | cut -d ' ' -f2` > ./Manifest
 #  - IMAGE=sso
 #  - TAG=`date +%Y%m%d%H%M`
   - docker build -t $IMAGE:$TAG .
