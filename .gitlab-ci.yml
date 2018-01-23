@@ -1,7 +1,7 @@
 variables:
   IMAGE: "gitlab-ci-demo"
   DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
-  GOPATH: "../gopath"
+  GOPATH: "$GOPATH/gopath"
 stages:
 - test
 #- build
@@ -9,11 +9,4 @@ stages:
 golang_test:
   stage: test
   script:
-    - mkdir $GOPATH
-    - export GOPATH=$GOPATH
-    - mkdir $GOPATH/src
-    - cp $PWD $GOPATH/src
-    - echo $CI_PIPELINE_ID
-    - echo $CI_JOB_ID
-    - echo $CI_COMMIT_SHA
-    - go test ./...
+    - echo $GOPATH
