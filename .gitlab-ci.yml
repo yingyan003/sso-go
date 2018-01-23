@@ -26,6 +26,7 @@ golang_test:
     - export GOPATH=$GOPATH
     - echo "gopath="$GOPATH
     - echo "-----------------------------------"
+    - echo $PWD
     - cd $PWD
     - ls -la
     - cd sso
