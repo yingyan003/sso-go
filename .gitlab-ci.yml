@@ -1,6 +1,7 @@
 variables:
  IMAGE: "sso"
  TAG: "citest"
+
 before_script:
  - mkdir src
  - mkdir src/sso
