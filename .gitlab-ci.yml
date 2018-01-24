@@ -1,6 +1,4 @@
-ymltest:
- stage: test
- script:
+before_script:
   - echo $(dirname "$PWD")
   - PARENTDIR=$(dirname "$PWD")
   - GOPATH=$PARENTDIR"/gopath"
