@@ -6,18 +6,18 @@ ymltest:
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
   - rm -rf $GOPATH
-  - mkdir $GOAPTH
+  - mkdir "$GOAPTH"
   - if [ ! -d "$GOPATH" ]
   - then
-       mkdir $GOPATH
+  -    mkdir "$GOAPTH"
   - else 
-       echo "gopath exists"$GOPATH
+  -    echo "gopath exists"$GOPATH
   - fi
   - if [ ! -d "$SRC" ]
   - then
        mkdir $SRC
   - else
-       echo "src exists"$SRC
+  -    echo "src exists"$SRC
   - fi
   - export GOPATH=$GOPATH
   - echo "gopath="$GOPATH
