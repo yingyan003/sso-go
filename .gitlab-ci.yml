@@ -7,15 +7,15 @@ ymltest:
   - SRC=$GOPATH"/src"
   - if [ -f "$GOPATH" ]
   - then
-      echo "gopath exists"
+      echo "gopath exists"$GOPATH
   - else 
       mkdir $GOPATH
   - fi
   - if[ -f "$SRC" ]
   - then
-  - echo "src exists"
+    echo "src exists"$SRC
   - else
-  - mkdir $SRC
+     mkdir $SRC
   - fi
   - export GOPATH=$GOPATH
   - echo "gopath="$GOPATH
