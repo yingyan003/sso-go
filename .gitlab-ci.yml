@@ -35,8 +35,8 @@ golang_deploy:
     - ls -la
     - echo "-------------go bulid-------------"
     - go build main.go
-    - docker build -t $IMAGE:$TAG .
-    - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
+    - docker build -t $IMAGE:$CI_PIPELINE_ID .
+    - docker tag $IMAGE:$CI_PIPELINE_ID img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
     - docker push img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
     
     
