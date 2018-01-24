@@ -8,3 +8,5 @@ ymltest:
   - rm -rf $GOPATH/zxy
   - '[ ! -f "$GOPATHSRC" ] && mkdir $GOPATH/zxy'
   - ls -la $GOPATH/zxy
+  - '[ ! -f "$GOPATHSRC" ] && mkdir $GOPATH/zxy'
+  - ls -la $GOPATH/zxy
