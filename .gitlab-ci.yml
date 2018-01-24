@@ -1,21 +1,22 @@
-before_script: 
- - PARENTDIR=$(dirname "$PWD")
- - GOPATH=$PARENTDIR"/gopath"
- - SRC=$GOPATH"/src"
- - if[-f"$GOPATH"]
- - then
- - echo "gopath exists"
- - else
-    mkdir $GOPATH
- - fi
- - if[-f"$SRC"]
- - then
- - echo "src exists"
- - else
- - mkdir $SRC
- - fi
- - export GOPATH=$GOPATH
- - echo "gopath="$GOPATH
- - cp -r $PWD $SRC
- - cd $SRC
- - pwd
+ymltest:
+ stage: test
+ script:
+  - "PARENTDIR=$(dirname \"$PWD\")"
+  - GOPATH=$PARENTDIR"/gopath"
+  - SRC=$GOPATH"/src"
+  - "if[-f\"$GOPATH\"]"
+  - then
+  - "echo \"gopath exists\""
+  - "else mkdir $GOPATH"
+  - fi
+  - "if[-f\"$SRC\"]"
+  - then
+  - "echo \"src exists\""
+  - else
+  - "mkdir $SRC"
+  - fi
+  - "export GOPATH=$GOPATH"
+  - "echo \"gopath=\"$GOPATH"
+  - "cp -r $PWD $SRC"
+  - "cd $SRC"
+  - pwd
