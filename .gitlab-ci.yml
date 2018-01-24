@@ -9,3 +9,7 @@ ymltest:
   - then
   - echo "file not exists"
   - fi
+  - if [ -f "$GOPATH" ]
+  - then
+  - echo "gopath exists"
+  - fi
