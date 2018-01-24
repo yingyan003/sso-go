@@ -1,6 +1,6 @@
 variables:
  IMAGE: "sso"
-# TAG: "date +%Y%m%d%H%M"
+# 此处无法定义TAG为时间戳:  `date +%Y%m%d%H%M`,不执行反引号命令
 
 before_script:
  - mkdir src
