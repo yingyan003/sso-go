@@ -6,11 +6,11 @@ ymltest:
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
   - if [ -d "$GOPATH" ]
-  - then
-  -    echo "gopath exists"$GOPATH
-  - else 
-  -    mkdir $GOPATH
-  - fi
+    then
+        echo "gopath exists"$GOPATH
+    else 
+        mkdir $GOPATH
+    fi
   - if [ -d "$SRC" ]
   - then
     echo "src exists"$SRC
@@ -20,6 +20,7 @@ ymltest:
   - export GOPATH=$GOPATH
   - echo "gopath="$GOPATH
   - echo "pwd="$PWD
+  - ls
   - cd gopath
   - pwd
   - ls
