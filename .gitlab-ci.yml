@@ -1,27 +1,37 @@
-ymltest:
- stage: test
- script:
-  - echo $(dirname "$PWD")
-  - PARENTDIR=$(dirname "$PWD")
-  - GOPATH=$PARENTDIR"/gopath"
-  - SRC=$GOPATH"/src"
-  - if [ -d "$GOPATH" ]
-  - then
-  -     echo "gopath exists"$GOPATH
-  - else 
-  -     mkdir $GOPATH
-  - fi
-  - if [ -d "$SRC" ]
-  - then
-  -     echo "src exists"$SRC
-  - else
-  -     mkdir $SRC
-  - fi
-  - export GOPATH=$GOPATH
-  - echo "--------gopath="$GOPATH
-  - echo "--------pwd="$PWD
-  - echo "--------src="$SRC
-  - ls -la $GOPATH
-  - ls -la $SRC
-  #- cp -r sso $SRC
- 
+variables:
+  IMAGE: "gitlab-ci-demo"
+  DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
+stages:
+- test
+#- build
+#- deploy
+golang_test:
+  stage: test
+  script:
+    - PARENTFOLDER=$(dirname "$PWD")
+    - GOPATH=$PARENTFOLDER"/gopath"
+    - GOPATHSRC=$PARENTFOLDER"/gopath/src"
+    - if [ -f "$GOPATH" ] 
+    - then 
+          echo "gopath exists"
+    - else 
+          mkdir $GOPATH 
+    - fi
+    - if [ -f "$GOPATHSRC" ]
+    - then 
+    -    echo "gopath src exists"
+    - else 
+    -    mkdir $GOPATHSRC 
+    - fi
+    - export GOPATH=$GOPATH
+    - echo "gopath="$GOPATH
+    - echo "-----------------------------------"
+    - echo $PWD
+    - cp -r $PWD $GOPATHSRC
+    - cd $GOPATHSRC
+    - ls -la
+    # - echo $CI_PIPELINE_ID
+    # - echo $CI_JOB_ID
+    # - echo $CI_COMMIT_SHA
+    
+    #- go test ./...
