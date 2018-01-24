@@ -7,9 +7,13 @@ ymltest:
   - SRC=$GOPATH"/src"
   - if [ ! -f "$GOPATH" ]
   - then
-  - echo "file not exists"
+  - echo "file not exists1"
+  - else
+  - echo "file exists1"
   - fi
   - if [ -f "$GOPATH" ]
   - then
-  - echo "gopath exists"
+  - echo "gopath exists2"
+  - else
+  - echo "gopath not exists2"
   - fi
