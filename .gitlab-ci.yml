@@ -2,11 +2,9 @@ variables:
   IMAGE: "gitlab-ci-demo"
   DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
 stages:
-- test
-#- build
-#- deploy
-golang_test:
-  stage: test
+- deploy
+golang_deploy:
+  stage: deploy
   script:
     - PARENTFOLDER=$(dirname "$PWD")
     - GOPATH=$PARENTFOLDER"/gopath"
@@ -30,8 +28,15 @@ golang_test:
     - PROJECTPATH=$GOPATHSRC"/"${PWD##*/}
     - echo $PROJECTPATH
     - cp -r $PWD $GOPATHSRC
-    - cd $GOPATHSRC
-    - ls -la
+    # - cd $GOPATHSRC
+    # - ls -la
     - cd $PROJECTPATH
+    - echo "----------$PROJECTPATH-------------"
     - ls -la
+    - echo "-------------go bulid-------------"
+    - go build main.go
+    - docker build -t $IMAGE:$TAG .
+    - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
+    - docker push img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
+    
     
