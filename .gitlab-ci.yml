@@ -1,53 +1,37 @@
-variables:
-  IMAGE: "sso"
-  DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
-stages:
-- deploy
-golang_deploy:
-  stage: deploy
-  script:
-    - PARENTFOLDER=$(dirname "$PWD")
-    - GOPATH=$PARENTFOLDER"/gopath"
-    - GOPATHSRC=$PARENTFOLDER"/gopath/src"
-    - if [ -f "$GOPATH" ] 
-    - then 
-          echo "gopath exists"
-    - else 
-          mkdir $GOPATH 
-    - fi
-    - if [ -f "$GOPATHSRC" ]
-    - then 
-    -    echo "gopath src exists"
-    -    rm -rf $GOPATHSRC
-    -    mkdir $GOPATHSRC 
-    - else 
-    -    mkdir $GOPATHSRC 
-    - fi
-    - pwd
-    - ls
-    - cd ..
-    - pwd
-    - ls
-    - cd gopath
-    - ls
-    - cd src
-    - ls
-    - cd ../../sso
-    - export GOPATH=$GOPATH
-    - echo "gopath="$GOPATH
-    - PROJECTPATH=$GOPATHSRC"/"${PWD##*/}
-    - echo $PROJECTPATH
-    - cp -r $PWD $GOPATHSRC
-    # - cd $GOPATHSRC
-    # - ls -la
-    - cd $PROJECTPATH
-    - echo "----------$PROJECTPATH-------------"
-    - ls -la
-    - echo "-------------go bulid-------------"
-    - go build main.go
-    - echo `git log | head -1 | cut -d ' ' -f2` > manifest
-    - docker build -t $IMAGE:$CI_PIPELINE_ID .
-    - docker tag $IMAGE:$CI_PIPELINE_ID img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
-    - docker push img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
-    
-    
+ymltest:
+ stage: test
+ script:
+  - echo $(dirname "$PWD")
+  - PARENTDIR=$(dirname "$PWD")
+  - GOPATH=$PARENTDIR"/gopath"
+  - SRC=$GOPATH"/src"
+  - if [ ！-d "$GOPATH" ]
+  - then
+       mkdir $GOPATH
+  - else 
+       echo "gopath exists"$GOPATH
+  - fi
+  - if [ ！-d "$SRC" ]
+  - then
+       mkdir $SRC
+  - else
+       echo "src exists"$SRC
+  - fi
+  - export GOPATH=$GOPATH
+  - echo "gopath="$GOPATH
+  - echo "pwd="$PWD
+  - ls
+  - cd ..
+  - pwd
+  - ls
+  - cd gopah
+  - pwd
+  - ls
+  - cd src
+  - pwd
+  - ls
+  - cd ../../sso
+  - cp -r $PWD $SRC
+  - cd $SRC
+  - pwd
+  - ls
