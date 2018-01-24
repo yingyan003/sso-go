@@ -23,6 +23,8 @@ build_image:
 #  - IMAGE=sso
 #  - TAG=`date +%Y%m%d%H%M`
   - ls -la
-  - docker build -t $IMAGE:$TAG .
-  - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$TAG
-  - docker push img.reg.3g:15000/$IMAGE:$TAG
+  - cd src/sso
+  - ls -la
+#   - docker build -t $IMAGE:$TAG .
+#   - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$TAG
+#   - docker push img.reg.3g:15000/$IMAGE:$TAG
