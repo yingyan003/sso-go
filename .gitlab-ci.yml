@@ -5,9 +5,33 @@ ymltest:
   - PARENTDIR=$(dirname "$PWD")
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
-  - rm -rf $GOPATH/zxy
-  - mkdir $GOPATH/zxy
-  - if [ -f $GOPATH"/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi
-  - rm -rf $GOPATH/zxy
-  - if [ -f $GOPATH"/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi
-#   - if [ ! -d $GOPATH"/zxy" ];then echo "file zxy not exists";else echo "file zxy exists";fi
+  - if [ ！-d "$GOPATH" ]
+  - then
+       mkdir $GOPATH
+  - else 
+       echo "gopath exists"$GOPATH
+  - fi
+  - if [ ！-d "$SRC" ]
+  - then
+       mkdir $SRC
+  - else
+       echo "src exists"$SRC
+  - fi
+  - export GOPATH=$GOPATH
+  - echo "gopath="$GOPATH
+  - echo "pwd="$PWD
+  - ls
+  - cd ..
+  - pwd
+  - ls
+  - cd gopah
+  - pwd
+  - ls
+  - cd src
+  - pwd
+  - ls
+  - cd ../../sso
+  - cp -r $PWD $SRC
+  - cd $SRC
+  - pwd
+  - ls
