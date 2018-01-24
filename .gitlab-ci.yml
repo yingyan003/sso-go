@@ -9,23 +9,22 @@ golang_test:
   stage: test
   script:
     - PARENTFOLDER=$(dirname "$PWD")
-    - GOPATH=$PARENTFOLDER"/gopath"
-    - GOPATHSRC=$PARENTFOLDER"/gopath/src"
-    - if [ -f "$GOPATH" ] 
+    - gopath=$PARENTFOLDER"/gopath"
+    - gopathsrc=$PARENTFOLDER"/gopath/src"
+    - if [ -f "$gopath" ] 
     - then 
           echo "gopath exists"
     - else 
-          mkdir $GOPATH 
+          mkdir $gopath 
     - fi
-    - if [ -f "$GOPATHSRC" ]
+    - if [ -f "$gopathsrc" ]
     - then 
     -    echo "gopath src exists"
     - else 
-    -    mkdir $GOPATHSRC 
+    -    mkdir $gopathsrc 
     - fi
-    - export GOPATH=$GOPATH
-    - echo "gopath="$GOPATH
-    - echo "-----------------------------------"
+    - export GOPATH=$gopath
+    - echo "-----------------------------------gopath="$gopathsrc
     - echo $PWD
     #- cp -r $PWD $GOPATHSRC
     #- cd $GOPATHSRC
