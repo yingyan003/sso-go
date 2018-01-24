@@ -17,13 +17,15 @@ before_script:
 
 build_image:
  script:
+  - ls -a
   - export GOPATH=$PWD
   - cd src/sso/
   - go build main.go
   - cd ../../
+  - ls -a 
   - echo `git log | head -1 | cut -d ' ' -f2` > ./Manifest
 #  - IMAGE=sso
 #  - TAG=`date +%Y%m%d%H%M`
-  - docker build -t $IMAGE:$CI_PIPELINE_ID .
-  - docker tag $IMAGE:$CI_PIPELINE_ID img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
-  - docker push img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID
+  - docker build -t $IMAGE:$TAG .
+  - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$TAG
+  - docker push img.reg.3g:15000/$IMAGE:$TAG
