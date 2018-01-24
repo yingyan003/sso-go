@@ -1,15 +1,27 @@
-ymltest:
- stage: test
- script:
-  - echo $(dirname "$PWD")
-  - PARENTDIR=$(dirname "$PWD")
-  - GOPATH=$PARENTDIR"/gopath"
-  - SRC=$GOPATH"/src"
-  - if [ ! -f "$GOPATH/zxy" ];then echo "file zxy not exists1";else echo "file zxy exists1";fi
-  - if [ ! -f "$GOPATH" ];then echo "file gopath not exists1";else echo "file gopath exists1";fi
-  - if [ ! -f "$GOPATH" ]
-  - then 
-  - echo "return file gopath not exists1"
-  - else 
-  - echo "return file gopath exists1"
-  - fi
+variables:
+  IMAGE: "sso"
+  DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
+stages:
+- deploy
+golang_deploy:
+  stage: deploy
+  script:
+    - PARENTFOLDER=$(dirname "$PWD")
+    - GOPATH=$PARENTFOLDER"/gopath"
+    - GOPATHSRC=$PARENTFOLDER"/gopath/src"
+    # - if [ -f "$GOPATH" ]
+    # - then
+    #       echo "gopath exists"
+    # - else
+    #       mkdir $GOPATH
+    # - fi
+    - rm -rf $GOPATHSRC
+    - if [ -f "$GOPATHSRC" ]
+    - then
+    
+    -    rm -rf $GOPATHSRC
+    -    mkdir $GOPATHSRC
+    - else
+    -    echo "gopath src not exists"
+    -    mkdir $GOPATHSRC
+    - fi
