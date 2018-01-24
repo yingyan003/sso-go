@@ -1,16 +1,14 @@
 variables:
 before_script:
  script:
-  - echo $(dirname "$PWD")
-  - PARENTDIR=$(dirname "$PWD")
-  - GOPATH=$PARENTDIR"/gopath"
-  - SRC=$GOPATH"/src"
-  - rm -rf $GOPATH/zxy
-  - mkdir $GOPATH/zxy
-  #- rm -rf $GOPATH/zxy
-  - if [  -f $GOPATH"/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi
-  - (if [ -f "$GOPATH/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi)
-  - rm -rf $GOPATH/zxy
-  - (if [ -f "$GOPATH/zxy" ]; then echo "file zxy exists"; else echo "file zxy not exists"; fi)
-stages:
-- deploy
+ - echo $(dirname "$PWD")
+ - PARENTDIR=$(dirname "$PWD")
+ - GOPATH=$PARENTDIR"/gopath"
+ - SRC=$GOPATH"/src"
+ - rm -rf $GOPATH/zxy
+ - mkdir $GOPATH/zxy
+ #- rm -rf $GOPATH/zxy
+ - if [  -f $GOPATH"/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi
+ - (if [ -f "$GOPATH/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi)
+ - rm -rf $GOPATH/zxy
+ - (if [ -f "$GOPATH/zxy" ]; then echo "file zxy exists"; else echo "file zxy not exists"; fi) 
