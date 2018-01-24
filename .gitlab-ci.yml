@@ -1,5 +1,6 @@
 variables:
 before_script:
+ script:
   - echo $(dirname "$PWD")
   - PARENTDIR=$(dirname "$PWD")
   - GOPATH=$PARENTDIR"/gopath"
