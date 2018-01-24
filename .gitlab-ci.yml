@@ -23,6 +23,16 @@ golang_deploy:
     - else 
     -    mkdir $GOPATHSRC 
     - fi
+    - pwd
+    - ls
+    - cd ..
+    - pwd
+    - ls
+    - cd gopath
+    - ls
+    - cd src
+    - ls
+    - cd ../../sso
     - export GOPATH=$GOPATH
     - echo "gopath="$GOPATH
     - PROJECTPATH=$GOPATHSRC"/"${PWD##*/}
