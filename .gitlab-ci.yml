@@ -9,7 +9,7 @@ golang_deploy:
     - PARENTFOLDER=$(dirname "$PWD")
     - GOPATH=$PARENTFOLDER"/gopath"
     - GOPATHSRC=$PARENTFOLDER"/gopath/src"
-    - PROJECTNAME=/"${PWD##*/}
+    - PROJECTNAME=${PWD##*/}
     - PROJECTPATH=$GOPATHSRC"/"${PROJECTNAME}
     - if [ ! -d "$GOPATH" ]; then mkdir $GOPATH; else echo "gopath exists"$GOPATH; fi
     - if [ ! -d "$GOPATHSRC" ]; then mkdir $GOPATHSRC; else echo "gopath exists"$GOPATH; fi
