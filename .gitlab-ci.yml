@@ -39,4 +39,4 @@ golang_test:
     - pwd
     - ls
     - ls -la
-    - echo $gopathsrc"/"${PWD##*/}
+    - echo $GOPATHSRC"/"${PWD##*/}
