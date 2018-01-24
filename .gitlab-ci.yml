@@ -27,9 +27,9 @@ golang_test:
     - echo "gopath="$GOPATH
     - echo "-----------------------------------"
     - echo $PWD
-    - cp -r $PWD $GOPATHSRC
-    - cd $GOPATHSRC
-    - ls -la
+    #- cp -r $PWD $GOPATHSRC
+    #- cd $GOPATHSRC
+    #- ls -la
     # - echo $CI_PIPELINE_ID
     # - echo $CI_JOB_ID
     # - echo $CI_COMMIT_SHA
