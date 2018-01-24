@@ -5,9 +5,9 @@ ymltest:
   - PARENTDIR=$(dirname "$PWD")
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
-  - if [ ! -f "$GOPATH" ]
+  - if [ -f "$GOPATH" ]
   - then
-  - mkdir $GOPATH
-  - else 
   - echo "gopath exists"$GOPATH
+  - else 
+  - mkdir $GOPATH
   - fi
