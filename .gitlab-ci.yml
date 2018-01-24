@@ -7,7 +7,5 @@ ymltest:
   - SRC=$GOPATH"/src"
   - if [ ! -f "$GOPATH" ]
   - then
-  - mkdir $GOPATH
-  - else 
-  - echo "gopath exists"$GOPATH
+  - echo "file not exists"
   - fi
