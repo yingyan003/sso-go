@@ -1,34 +1,18 @@
-ymltest:
- stage: test
- script:
-  - echo $(dirname "$PWD")
-  - PARENTDIR=$(dirname "$PWD")
-  - GOPATH=$PARENTDIR"/gopath"
-  - SRC=$GOPATH"/src"
-  - rm -rf $GOPATH
-  - mkdir $GOPATH
-  - if [ ! -d "$GOPATH" ]; then mkdir $GOPATH; else echo "gopath exists"$GOPATH; fi
-  - if [ ! -d "$SRC" ]
-  - then
-  -     mkdir $SRC
-  - else
-  -    echo "src exists"$SRC
-  - fi
-  - export GOPATH=$GOPATH
-  - echo "gopath="$GOPATH
-  - echo "pwd="$PWD
-  - ls
-  - cd ..
-  - pwd
-  - ls
-  - cd gopah
-  - pwd
-  - ls
-  - cd src
-  - pwd
-  - ls
-  - cd ../../sso
-  - cp -r $PWD $SRC
-  - cd $SRC
-  - pwd
-  - ls
+variables:
+  IMAGE: "sso"
+  DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
+stages:
+- deploy
+golang_deploy:
+  stage: deploy
+  script:
+    - PARENTFOLDER=$(dirname "$PWD")
+    - GOPATH=$PARENTFOLDER"/gopath"
+    - GOPATHSRC=$PARENTFOLDER"/gopath/src"
+    - PROJECTPATH=$GOPATHSRC"/"${PWD##*/}
+    - if [ ! -d "$GOPATH" ]; then mkdir $GOPATH; else echo "gopath exists"$GOPATH; fi
+    - if [ ! -d "$GOPATHSRC" ]; then mkdir $GOPATHSRC; else echo "gopath exists"$GOPATH; fi
+    - export GOPATH=$GOPATH
+    - cd ..
+    - echo "$PROJECTPATH"
+    - echo $GOPATHSRC"/"$PROJECTPATH 
