@@ -1,36 +1,28 @@
-variables:
-  IMAGE: "gitlab-ci-demo"
-  DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
-stages:
-- test
-#- build
-#- deploy
-golang_test:
-  stage: test
-  script:
-    - PARENTFOLDER=$(dirname "$PWD")
-    - gopath=$PARENTFOLDER"/gopath"
-    - gopathsrc=$PARENTFOLDER"/gopath/src"
-    - if [ -f "$gopath" ] 
-    - then 
-          echo "gopath exists"
-    - else 
-          mkdir $gopath 
-    - fi
-    - if [ -f "$gopathsrc" ]
-    - then 
-    -    echo "gopath src exists"
-    - else 
-    -    mkdir $gopathsrc 
-    - fi
-    - export GOPATH=$gopath
-    - echo "-----------------------------------gopath="$gopathsrc
-    - echo $PWD
-    #- cp -r $PWD $GOPATHSRC
-    #- cd $GOPATHSRC
-    #- ls -la
-    # - echo $CI_PIPELINE_ID
-    # - echo $CI_JOB_ID
-    # - echo $CI_COMMIT_SHA
-    
-    #- go test ./...
+ymltest:
+ stage: test
+ script:
+  - echo $(dirname "$PWD")
+  - PARENTDIR=$(dirname "$PWD")
+  - GOPATH=$PARENTDIR"/gopath"
+  - SRC=$GOPATH"/src"
+  - if [ ！-d "$GOPATH" ]
+  - then
+  - mkdir $GOPATH
+  - else 
+  - echo "gopath exists"$GOPATH
+  - fi
+  - if [ ！-d "$SRC" ]
+  - then
+  - mkdir $SRC
+  - else
+  - echo "src exists"$SRC
+  - fi
+  - export GOPATH=$GOPATH
+  - echo "gopath="$GOPATH
+  - echo "pwd="$PWD
+  - ls
+  - cd ..
+  - pwd
+  - cp -r $PWD $SRC
+  - cd $SRC
+  - pwd
