@@ -18,12 +18,10 @@ ymltest:
   - mkdir $SRC
   - fi
   - export GOPATH=$GOPATH
-  - echo "gopath="$GOPATH
-  - echo "pwd="$PWD
-  - ls
-  - cd ..
-  - pwd
-  - ls 
-  - cp -r sso $SRC
-  - cd $SRC
-  - pwd
+  - echo "--------gopath="$GOPATH
+  - echo "--------pwd="$PWD
+  - echo "--------src="$SRC
+  - ls -la $GOPATH
+  - ls -la $SRC
+  #- cp -r sso $SRC
+ 
