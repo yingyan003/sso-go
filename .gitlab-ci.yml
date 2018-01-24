@@ -7,7 +7,7 @@ ymltest:
   - SRC=$GOPATH"/src"
   - rm -rf $GOPATH/zxy
   - mkdir $GOPATH/zxy
-  - if [ -d $GOPATH"/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi
+  - if [ -f $GOPATH"/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi
   - rm -rf $GOPATH/zxy
-  - if [ -d $GOPATH"/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi
+  - if [ -f $GOPATH"/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi
 #   - if [ ! -d $GOPATH"/zxy" ];then echo "file zxy not exists";else echo "file zxy exists";fi
