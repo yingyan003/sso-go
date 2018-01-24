@@ -18,7 +18,7 @@ golang_deploy:
     - rm -rf $GOPATHSRC
     - if [ -f "$GOPATHSRC" ]
     - then
-    
+    -    echo "gopath src exists"
     -    rm -rf $GOPATHSRC
     -    mkdir $GOPATHSRC
     - else
