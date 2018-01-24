@@ -23,6 +23,7 @@ ymltest:
   - ls
   - cd ..
   - pwd
-  - cp -r $PWD $SRC
+  - ls 
+  - cp -r sso $SRC
   - cd $SRC
   - pwd
