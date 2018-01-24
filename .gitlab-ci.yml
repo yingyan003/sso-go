@@ -22,6 +22,7 @@ build_image:
   - cd ../../
   - echo `git log | head -1 | cut -d ' ' -f2` > ./Manifest
 #  - IMAGE=sso
+  - echo $PWD
   - TAG=`date +%Y%m%d%H%M`
   - ls -la
   - cd src/sso
