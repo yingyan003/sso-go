@@ -27,7 +27,16 @@ golang_test:
     - fi
     - export GOPATH=$GOPATH
     - echo "gopath="$GOPATH
+    - pwd
+    - ls
+    - cd ..
+    - pwd
+    - cd src
+    - ls
+    - cd ../sso
     - cp -r $PWD $GOPATHSRC
     - cd $GOPATHSRC
+    - pwd
+    - ls
     - ls -la
     - echo $gopathsrc"/"${PWD##*/}
