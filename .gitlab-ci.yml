@@ -1,3 +1,4 @@
+variables:
 before_script:
   - echo $(dirname "$PWD")
   - PARENTDIR=$(dirname "$PWD")
@@ -10,4 +11,5 @@ before_script:
   - (if [ -f "$GOPATH/zxy" ];then echo "file zxy exists";else echo "file zxy not exists";fi)
   - rm -rf $GOPATH/zxy
   - (if [ -f "$GOPATH/zxy" ]; then echo "file zxy exists"; else echo "file zxy not exists"; fi)
-  
+stages:
+- deploy
