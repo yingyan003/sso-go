@@ -1,6 +1,6 @@
 variables:
  IMAGE: "sso"
- TAG: "date +%Y%m%d%H%M"
+# TAG: "date +%Y%m%d%H%M"
  
 before_script:
  - mkdir src
@@ -22,7 +22,7 @@ build_image:
   - cd ../../
   - echo `git log | head -1 | cut -d ' ' -f2` > ./Manifest
 #  - IMAGE=sso
-#  - TAG=`date +%Y%m%d%H%M`
+  - TAG=`date +%Y%m%d%H%M`
   - ls -la
   - cd src/sso
   - ls -la
