@@ -11,7 +11,7 @@ ymltest:
   - else 
       mkdir $GOPATH
   - fi
-  - if[ -f "$SRC" ]
+  - if [ -f "$SRC" ]
   - then
     echo "src exists"$SRC
   - else
