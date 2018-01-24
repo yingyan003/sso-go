@@ -17,11 +17,13 @@ before_script:
 
 build_image:
  script:
+  - pwd
   - ls -a
   - export GOPATH=$PWD
   - cd src/sso/
   - go build main.go
   - cd ../../
+  - pwd 
   - ls -a 
   - echo `git log | head -1 | cut -d ' ' -f2` > ./Manifest
 #  - IMAGE=sso
