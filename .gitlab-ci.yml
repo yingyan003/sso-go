@@ -6,7 +6,6 @@ ymltest:
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
   - rm -rf $GOPATH/zxy
-  - '[ ! -f "$GOPATHSRC" ] && mkdir $GOPATH/zxy'
+  - '[ ! -d "$GOPATHSRC" ] && mkdir $GOPATH/zxy'
   - ls -la $GOPATH/zxy
-  - '[ ! -f "$GOPATHSRC" ] && mkdir $GOPATH/zxy'
-  - ls -la $GOPATH/zxy
+  - '[ ! -d "$GOPATHSRC" ] && mkdir $GOPATH/zxy'
