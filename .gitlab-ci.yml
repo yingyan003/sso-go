@@ -20,6 +20,10 @@ ymltest:
   - export GOPATH=$GOPATH
   - echo "gopath="$GOPATH
   - echo "pwd="$PWD
+  - cd gopath
+  - pwd
+  - ls
+  - cd src
   - cp -r $PWD $SRC
   - cd $SRC
   - pwd
