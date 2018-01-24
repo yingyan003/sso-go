@@ -15,7 +15,7 @@ ymltest:
   - fi
   - if [ ! -d "$SRC" ]
   - then
-       mkdir $SRC
+  -     mkdir $SRC
   - else
   -    echo "src exists"$SRC
   - fi
