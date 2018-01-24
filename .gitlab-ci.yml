@@ -15,6 +15,6 @@ golang_deploy:
     - if [ ! -d "$GOPATHSRC" ]; then mkdir $GOPATHSRC; else echo "gopath exists"$GOPATH; fi
     - export GOPATH=$GOPATH
     - cd ..
-    - echo "$PROJECTPATH"
-    - echo $GOPATHSRC"/"$PROJECTNAME 
-    #- mv $PROJECTPATH $GOPATHSRC"/"$PROJECTNAME 
+    - echo "$PROJECTNAME"
+    - echo $PROJECTPATH 
+    #- mv $PROJECTNAME $PROJECTPATH
