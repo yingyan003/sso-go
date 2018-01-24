@@ -5,6 +5,8 @@ ymltest:
   - PARENTDIR=$(dirname "$PWD")
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
+  - rm -rf $GOPATH
+  - mkdir $GOAPTH
   - if [ ! -d "$GOPATH" ]
   - then
        mkdir $GOPATH
