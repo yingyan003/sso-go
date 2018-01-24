@@ -6,10 +6,10 @@ ymltest:
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
   - rm -rf $GOPATH
-  - mkdir "$GOAPTH"
+  - mkdir $GOPATH
   - if [ ! -d "$GOPATH" ]
   - then
-  -    mkdir "$GOAPTH"
+  -    mkdir $GOPATH
   - else 
   -    echo "gopath exists"$GOPATH
   - fi
