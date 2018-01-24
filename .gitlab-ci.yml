@@ -11,7 +11,7 @@ ymltest:
   - else
   - echo "file not exists1"
   - fi
-  - if [ -f "$GOPATH" ]
+  - if [ -f "$GOPATH/zxy" ]
   - then
   - echo "gopath exists2"
   - else
