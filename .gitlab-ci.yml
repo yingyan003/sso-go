@@ -1,6 +1,6 @@
 variables:
  IMAGE: "sso"
- TAG: `date +%Y%m%d%H%M`
+ TAG: "date +%Y%m%d%H%M"
  
 before_script:
  - mkdir src
