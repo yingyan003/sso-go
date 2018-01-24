@@ -5,6 +5,6 @@ ymltest:
   - PARENTDIR=$(dirname "$PWD")
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
-  #- mkdir $GOPATH/zxy
-  - rm -rf $GOPATH/zxy
-  - 'if [ -f "$GOPATH/zxy" ]; then echo "file zxy exists"; else echo "file zxy not exists1"; fi'
+  - mkdir $GOPATH/zxy
+  #- rm -rf $GOPATH/zxy
+  - 'if [ ! -f "$GOPATH/zxy" ]; then echo "file zxy not exists"; else echo "file zxy exists"; fi'
