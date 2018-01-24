@@ -1,6 +1,6 @@
 variables:
  IMAGE: "sso"
- TAG: "citest"
+# 此处无法定义TAG为时间戳:  `date +%Y%m%d%H%M`,不执行反引号命令
 
 before_script:
  - mkdir src
@@ -17,13 +17,17 @@ before_script:
 
 build_image:
  script:
+  - pwd
+  - ls -a
   - export GOPATH=$PWD
   - cd src/sso/
   - go build main.go
   - cd ../../
-  - echo `git log | head -1 | cut -d ' ' -f2` > ../Manifest
+  - pwd
+  - ls -a
+  - echo `git log | head -1 | cut -d ' ' -f2` > ./Manifest
 #  - IMAGE=sso
-#  - TAG=`date +%Y%m%d%H%M`
+  - TAG=`date +%Y%m%d%H%M`
   - docker build -t $IMAGE:$TAG .
   - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$TAG
   - docker push img.reg.3g:15000/$IMAGE:$TAG

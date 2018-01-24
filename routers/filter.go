@@ -18,13 +18,13 @@ import (
 //获取用户列表是否直接放行
 func AuthFilter(ctx *context.Context) {
 	req := ctx.Request
-	//TODO 重复登录问题待解决
-	if req.RequestURI == "/v1/login" || (req.RequestURI == "/v1/user" && (req.Method == "POST" || req.Method == "GET")) {
+	if req.RequestURI == "/v1/user" && (req.Method == "POST" || req.Method == "GET") {
 		//ctx.Redirect(302,"/v1/login")
 		return
 	}
 
 	tokenString := ctx.Input.Header("token")
+	fmt.Println("token", tokenString)
 	//token值为空，其他都需重新登录
 	if tokenString == "" {
 		status := errors.NewStatus(errors.TOKEN_ERR, "无token")
