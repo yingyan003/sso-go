@@ -30,3 +30,4 @@ golang_test:
     - cp -r $PWD $GOPATHSRC
     - cd $GOPATHSRC
     - ls -la
+    - echo $gopathsrc"/"${PWD##*/}
