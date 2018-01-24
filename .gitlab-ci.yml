@@ -21,10 +21,8 @@ ymltest:
   - echo "gopath="$GOPATH
   - echo "pwd="$PWD
   - ls
-  - cd gopath
+  - cd ..
   - pwd
-  - ls
-  - cd src
   - cp -r $PWD $SRC
   - cd $SRC
   - pwd
