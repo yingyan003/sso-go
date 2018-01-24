@@ -1,22 +1,22 @@
 ymltest:
  stage: test
  script:
-  - "PARENTDIR=$(dirname \"$PWD\")"
+  - PARENTDIR=$(dirname "$PWD")
   - GOPATH=$PARENTDIR"/gopath"
   - SRC=$GOPATH"/src"
-  - "if[-f\"$GOPATH\"]"
+  - if[-f "$GOPATH"]
   - then
-  - "echo \"gopath exists\""
-  - "else mkdir $GOPATH"
+  - echo "gopath exists"
+  - else mkdir $GOPATH
   - fi
-  - "if[-f\"$SRC\"]"
+  - if[-f "$SRC"]
   - then
-  - "echo \"src exists\""
+  - echo "src exists"
   - else
-  - "mkdir $SRC"
+  - mkdir $SRC
   - fi
-  - "export GOPATH=$GOPATH"
-  - "echo \"gopath=\"$GOPATH"
-  - "cp -r $PWD $SRC"
-  - "cd $SRC"
+  - export GOPATH=$GOPATH
+  - echo "gopath="$GOPATH
+  - cp -r $PWD $SRC
+  - cd $SRC
   - pwd
