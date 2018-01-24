@@ -1,6 +1,5 @@
 variables:
   IMAGE: "sso"
-  DATA: "{\"image\":\"img.reg.3g:15000/$IMAGE:$CI_PIPELINE_ID\"}"
 stages:
 - deploy
 golang_deploy:
@@ -17,4 +16,14 @@ golang_deploy:
     - cd ..
     - echo "$PROJECTNAME"
     - echo $PROJECTPATH 
-    #- mv $PROJECTNAME $PROJECTPATH
+    - mv $PROJECTNAME $PROJECTPATH
+    - cd $PROJECTPATH
+    - echo "----------$PROJECTPATH-------------"
+    - ls -la
+    - echo "-------------go bulid-------------"
+    - go build main.go
+    - echo `git log | head -1 | cut -d ' ' -f2` > manifest
+    - TAG=`date +%Y%m%d%H%M`
+    - docker build -t $IMAGE:$TAG .
+    - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$TAG
+    - docker push img.reg.3g:15000/$IMAGE:$TAG
