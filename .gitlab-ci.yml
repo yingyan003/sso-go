@@ -1,6 +1,6 @@
 variables:
  IMAGE: "sso"
- TAG: "date +%Y%m%d%H%M"
+# TAG: "citest"
 
 before_script:
  - mkdir src
@@ -23,11 +23,11 @@ build_image:
   - cd src/sso/
   - go build main.go
   - cd ../../
-  - pwd 
-  - ls -a 
+  - pwd
+  - ls -a
   - echo `git log | head -1 | cut -d ' ' -f2` > ./Manifest
 #  - IMAGE=sso
-#  - TAG=`date +%Y%m%d%H%M`
+  - TAG=`date +%Y%m%d%H%M`
   - docker build -t $IMAGE:$TAG .
   - docker tag $IMAGE:$TAG img.reg.3g:15000/$IMAGE:$TAG
   - docker push img.reg.3g:15000/$IMAGE:$TAG
