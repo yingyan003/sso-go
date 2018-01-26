@@ -45,6 +45,8 @@ func GetEStoken(redisKey string) (string, *errors.Status) {
 	}
 
 	privateKey := ecdsa.PrivateKey{D: keyD, PublicKey: publicKey}
+	//todo test
+	//fmt.Println("--------pub:",privateKey,"\n-------pri:",privateKey)
 	ss, err := token.SignedString(&privateKey)
 	if err != nil {
 		logs.Error("ES256的token生成签名错误,err=%v", err)

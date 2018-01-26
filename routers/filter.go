@@ -24,7 +24,7 @@ func AuthFilter(ctx *context.Context) {
 	}
 
 	tokenString := ctx.Input.Header("token")
-	fmt.Println("token", tokenString)
+
 	//token值为空，其他都需重新登录
 	if tokenString == "" {
 		status := errors.NewStatus(errors.TOKEN_ERR, "无token")
@@ -35,6 +35,7 @@ func AuthFilter(ctx *context.Context) {
 	//前端登录请求头带token,且默认值为"default"。
 	//当token!="default"说明不是首次登录，需验证是否重复登陆
 	if tokenString == "default" && req.RequestURI == "/v1/login" {
+		fmt.Println("default")
 		return
 	}
 
@@ -45,6 +46,7 @@ func AuthFilter(ctx *context.Context) {
 		return
 	}
 
+	//TODO 第二层token采用ES256算法，但XYD没解决
 	tokenES := claimsHS["id"].(string)
 	//解析第二层token
 	redisKey, status := jwtUtil.ParseEStoken(tokenES)
@@ -56,7 +58,7 @@ func AuthFilter(ctx *context.Context) {
 	if controllers.IsLoginStatus(redisKey) {
 		//重复登录
 		if req.RequestURI == "/v1/login" {
-			status := errors.NewStatus(errors.TOKEN_ERR, "token已存在且有效")
+			status := errors.NewStatus(errors.TOKEN_ERR, "重复登录")
 			ctx.Output.Body(status.ToBytes())
 			return
 		}
@@ -67,6 +69,11 @@ func AuthFilter(ctx *context.Context) {
 
 		//每次访问都重新刷新token失效时间
 		sysinit.Cache.Put(redisKey, uid, controllers.DEFAULT_EXPIRATION)
+		return
+	}
+
+	//登录时携带的token失效，放行
+	if req.RequestURI == "/v1/login" {
 		return
 	}
 
