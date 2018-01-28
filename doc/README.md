@@ -204,7 +204,5 @@ v1版本支持如下API操作：
 *example*
 ---------
 ```json
-{
 {"code":"OK","message":"用户存在","data":{"id":35,"username":"r","password":"TzM+MhHAx9/hJ0MLOzhbzSFv5svqnAp//ZPectaAVLw=","createtime":"2018-01-26T15:33:04+08:00","updatetime":"2018-01-26T15:34:03+08:00"}}
-}
 ```
