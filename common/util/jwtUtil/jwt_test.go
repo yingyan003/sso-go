@@ -23,7 +23,11 @@ func TestEcdsaTest(t *testing.T){
 		fmt.Println("generate key error",err)
 	}
 	puk=prk.PublicKey
+	fmt.Printf("prkD=%X\n",prk.D)
+	fmt.Printf("prkX=%X\n",prk.X)
+	fmt.Printf("prkY=%X\n",prk.Y)
 	fmt.Println("prk",prk," \npbk",puk)
+
 //get
 	claims := jwt.MapClaims{
 		"redisKey": "mykey",
@@ -48,3 +52,5 @@ func TestEcdsaTest(t *testing.T){
 		fmt.Println("claims:",claims)
 	}
 }
+
+

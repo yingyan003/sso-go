@@ -25,8 +25,7 @@ const (
 	//jwt
 	TOKEN_ERR = "token_err"
 
-
-	RELOGIN
+	REQUEST_PARAM_ERR = "request_param_err"
 )
 
 func NewStatus(code, msg string) *Status {

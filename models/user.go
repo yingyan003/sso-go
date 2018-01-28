@@ -72,9 +72,27 @@ func UpdateUser(u *User) *errors.Status {
 	return nil
 }
 
+func QueryUserById(id int64) (*User, *errors.Status) {
+	if id == 0 {
+		logs.Error("QueryUserById:用户id不能为空")
+		status := errors.NewStatus(errors.DB_CRUD_ERR, "用户id不能为空")
+		return nil, status
+	}
+	u := new(User)
+	u.Id=id
+	err := orm.NewOrm().Read(u)
+	//err==orm.ErrNoRows说明找不到该记录
+	if err != nil {
+		logs.Info("QueryUserById fail,err:", err)
+		status := errors.NewStatus(errors.DB_CRUD_ERR, "用户不存在")
+		return nil, status
+	}
+	return u, nil
+}
+
 func QueryUserByName(username string) (*User, *errors.Status) {
 	if username == "" {
-		logs.Error("QueryUserByNameAndPwd:用户名不能为空")
+		logs.Error("QueryUserByName:用户名不能为空")
 		status := errors.NewStatus(errors.DB_CRUD_ERR, "用户名不能为空")
 		return nil, status
 	}

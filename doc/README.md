@@ -34,7 +34,12 @@ v1版本支持如下API操作：
 #### 获取用户列表
 ---------------
 
-    * API: GET /v1/User
+    * API: GET /v1/user/list
+
+#### 通过uid查询用户
+---------------
+
+    * API: GET /v1/user/:uid
 
 
 ### 详细设计
@@ -71,7 +76,7 @@ v1版本支持如下API操作：
 * 返回结果：
 
 {
-    code: "ok"表示请求成功，其他表示失败
+    code: "ok"表示请求成功，其他表示失败 (如下所有api适用此规则)
     message: 请求状态信息
     data: token
 }
@@ -172,7 +177,7 @@ v1版本支持如下API操作：
 #### 获取用户列表
 ---------
 
-* API: GET /v1/user
+* API: GET /v1/user/list
 
 * 返回结果：
 
@@ -186,5 +191,20 @@ v1版本支持如下API操作：
     {"id":4,"username":"a","password":"","createtime":"0001-01-01T00:00:00Z","updatetime":"0001-01-01T00:00:00Z"}
     {"id":6,"username":"b","password":"","createtime":"0001-01-01T00:00:00Z","updatetime":"0001-01-01T00:00:00Z"}
     ]
+}
+```
+
+#### 通过uid查询用户
+------------------
+
+* API: GET /v1/user/:uid
+
+* 返回结果：
+
+*example*
+---------
+```json
+{
+{"code":"OK","message":"用户存在","data":{"id":35,"username":"r","password":"TzM+MhHAx9/hJ0MLOzhbzSFv5svqnAp//ZPectaAVLw=","createtime":"2018-01-26T15:33:04+08:00","updatetime":"2018-01-26T15:34:03+08:00"}}
 }
 ```

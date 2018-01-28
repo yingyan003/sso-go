@@ -13,12 +13,29 @@ import (
 	"sso/common/util/jwtUtil"
 	"strconv"
 	"sso/common/sysinit"
+	"github.com/astaxie/beego/plugins/cors"
 )
 
+var crossDomainFilter = cors.Allow(&cors.Options{
+	AllowAllOrigins:  true,
+	AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+	AllowHeaders:     []string{"Origin", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type", "token"},
+	ExposeHeaders:    []string{"Content-Length", "Access-Control-Allow-Origin", "Access-Control-Allow-Headers", "Content-Type", "token"},
+	AllowCredentials: true,
+})
+
 //获取用户列表是否直接放行
-func AuthFilter(ctx *context.Context) {
+func Filter(ctx *context.Context) {
+	//解决跨域问题
+	crossDomainFilter(ctx)
+	//登录认证拦截
+	auth(ctx)
+}
+
+func auth(ctx *context.Context){
 	req := ctx.Request
 	if req.RequestURI == "/v1/user" && (req.Method == "POST" || req.Method == "GET") {
+		fmt.Println(ctx.Request.RequestURI,"放行")
 		//ctx.Redirect(302,"/v1/login")
 		return
 	}

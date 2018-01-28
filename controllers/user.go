@@ -5,7 +5,7 @@ import (
 	"github.com/astaxie/beego/logs"
 	"sso/common/errors"
 	"sso/common/util/encrypt"
-	"fmt"
+	"strconv"
 )
 
 type UserController struct {
@@ -14,8 +14,6 @@ type UserController struct {
 
 //创建用户
 func (u *UserController) Post() {
-	fmt.Println("enter create user")
-
 	//从请求体中解析用户信息
 	user := new(models.User)
 	status := u.getReqBody(user)
@@ -99,6 +97,17 @@ func (u *UserController) Put() {
 }
 
 func (u *UserController) Get() {
+	param := u.Ctx.Input.Param(":idOrList")
+	if param == "list" {
+		u.GetUserList()
+		return
+	} else {
+		u.GetUserOne(param)
+		return
+	}
+}
+
+func (u *UserController) GetUserList() {
 	users, status := models.QueryUserList()
 	if status != nil {
 		u.Ctx.Output.Body(status.ToBytes())
@@ -109,6 +118,26 @@ func (u *UserController) Get() {
 	status = errors.NewStatus(errors.OK, "查询用户列表成功")
 	status.Data = users
 	u.Ctx.Output.Body(status.ToBytes())
-	return
 }
 
+func (u *UserController) GetUserOne(uid string) {
+	id, err := strconv.ParseInt(uid, 10, 64)
+	if err != nil {
+		logs.Error("请求的uid格式错误:uid=%v", uid)
+		status := errors.NewStatus(errors.REQUEST_PARAM_ERR, "请求的uid格式错误")
+		u.Ctx.Output.Body(status.ToBytes())
+		return
+	}
+
+	user := new(models.User)
+	user, status := models.QueryUserById(id)
+	if status != nil {
+		logs.Info("用户不存在,id=%d", id)
+		u.Ctx.Output.Body(status.ToBytes())
+		return
+	}
+
+	status = errors.NewStatus(errors.OK, "用户存在")
+	status.Data = user
+	u.Ctx.Output.Body(status.ToBytes())
+}
