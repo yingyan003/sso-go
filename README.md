@@ -74,3 +74,13 @@ Dockerfile说明：
 · ADD Dockerfile / : 将当前路径下的Dockerfile文件拷贝到容器的/路径下，文件夹名为Dockerfile    
 · ADD main /sso ：将当前路径下的二进制文件main拷贝到容器的/路径下，文件夹名为sso  
 · ENTRYPOINT ["/sso"] ： 程序运行入口是sso,也就是当容器启动时，指定“./sso”
+
+gitlib构建日志：
+
+![](https://github.com/yingyan003/sso-go/blob/master/picture/log1.png)
+
+![](https://github.com/yingyan003/sso-go/blob/master/picture/log2.png)
+
+![](https://github.com/yingyan003/sso-go/blob/master/picture/log3.png)
+
+![](https://github.com/yingyan003/sso-go/blob/master/picture/log4.png)
