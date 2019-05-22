@@ -53,7 +53,7 @@ go build main.go
 
 > 前言：  
 sso项目目录下有2个文件，".gitlab-ci.yml"和"Dockerfile"，这2个文件就是部署容器云需要的。  
-因为公司的代码仓库用的是gitlab，而gitlab编译程序需要设置一个runner,其实就是个机器，虚机和物理机都行，物理机太浪费，一般都是虚机。因为go程序在这里编译，所以需要安装go等需要的环境。  
+因为代码仓库用的是gitlab，而gitlab编译程序需要设置一个runner,其实就是个机器，虚机和物理机都行，物理机太浪费，一般都是虚机。因为go程序在这里编译，所以需要安装go等需要的环境。  
 
 操作：   
 当从本地（你自己的电脑）把代码通过git提交到gitlab仓库时，gitlab会自动执行“.gitlab-ci.yml”文件，该文件中的命令其实就是shell命令。把你要做的操作写在.gitlab-ci.yml中，gitlab会依次执行里面指定的操作命令。  
